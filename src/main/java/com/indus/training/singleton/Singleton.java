@@ -1,6 +1,11 @@
 package com.indus.training.singleton;
 
-public class Singleton implements Cloneable {
+import java.io.Serializable;
+
+public class Singleton implements Cloneable, Serializable {
+
+    private static final long serialVersionUID = 1418859892557268010L;
+
     private static Singleton ourInstance = null;
 
     private Singleton() {
