@@ -30,7 +30,7 @@ public class SingletonTest {
         assertEquals(originalObj, cloneObj);
     }
 
-    @Test
+    //@Test
     public void testSerializeInMemory() {
 
         Singleton origObj = Singleton.getInstance();
@@ -80,5 +80,35 @@ public class SingletonTest {
         }
         assertEquals(origObj, secondObj);
 
+    }
+
+    @Test
+    public void testMultiThread() {
+
+        SingletonThread t1 = new SingletonThread();
+        t1.setName("Thread 1");
+
+        SingletonThread t2 = new SingletonThread();
+        t2.setName("Thread 2");
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Singleton obj1 = t1.getInstanceThread();
+        Singleton obj2 = t2.getInstanceThread();
+
+        assertEquals(obj1, obj2);
     }
 }
