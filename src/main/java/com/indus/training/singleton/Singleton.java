@@ -1,6 +1,6 @@
 package com.indus.training.singleton;
 
-public class Singleton {
+public class Singleton implements Cloneable {
     private static Singleton ourInstance = null;
 
     private Singleton() {
@@ -14,5 +14,8 @@ public class Singleton {
         return ourInstance;
     }
 
-
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
