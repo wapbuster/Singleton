@@ -24,4 +24,9 @@ public class Singleton implements Cloneable, Serializable {
         //return super.clone();
         return Singleton.getInstance();
     }
+
+    public Object readResolve() throws Exception {
+
+        return Singleton.getInstance();
+    }
 }
