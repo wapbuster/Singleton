@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fd40194-c399-4f40-9f2e-1f441be211f1" name="Default Changelist" comment="To break singleton with the multithreading:&#10; extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created sometimes, because the two threads check [ if (dbConn == null) ] in getInstance() and since they are null, they create new instances at same time. But sometimes the test passes as instances are same, this is because, one of the thread races first to create instance, while other thread will return the instance straight away, created by first thread as it checks [ if (dbConn == null) ].">
+    <list default="true" id="6fd40194-c399-4f40-9f2e-1f441be211f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/indus/training/singleton/Singleton.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/indus/training/singleton/Singleton.class" afterDir="false" />
     </list>
     <list id="3c670a8f-ae31-445f-b2de-2395b501ecc3" name="Revert &quot;To break singleton with the multithreading, extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created.&quot;" comment="Revert &quot;To break singleton with the multithreading, extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created.&quot;&#10;&#10;This reverts commit 53b3d6b0" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="187">
+              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -281,16 +282,17 @@
       <option name="project" value="LOCAL" />
       <updated>1547769254730</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="To make singleton class thread proof, we use 'synchronized' keyword for the getInstance(). This makes only one thread access the method at a time.">
+      <created>1547773835873</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547773835873</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SingletonTest - 2019.01.17 at 20h 00m 00s.xml">
-      <configuration name="SingletonTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SingletonTest - 2019.01.17 at 20h 00m 03s.xml">
-      <configuration name="SingletonTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SingletonTest - 2019.01.17 at 20h 00m 05s.xml">
       <configuration name="SingletonTest" configurationId="JUnit" />
     </history-entry>
@@ -315,9 +317,15 @@
     <history-entry file="SingletonTest - 2019.01.17 at 20h 02m 44s.xml">
       <configuration name="SingletonTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SingletonTest - 2019.01.17 at 20h 07m 43s.xml">
+      <configuration name="SingletonTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SingletonTest - 2019.01.17 at 20h 07m 48s.xml">
+      <configuration name="SingletonTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16981000" />
+    <option name="totallyTimeSpent" value="18128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -331,8 +339,8 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3478261" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.27858293" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3478261" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.27858293" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -403,7 +411,8 @@
     <MESSAGE value="To avoid breaking of singleton by serialization, include readResolve() in the Singleton class and make sure the readResolve() returns the singleton instance." />
     <MESSAGE value="To break singleton with the multithreading, extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created." />
     <MESSAGE value="To break singleton with the multithreading:&#10; extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created sometimes, because the two threads check [ if (dbConn == null) ] in getInstance() and since they are null, they create new instances at same time. But sometimes the test passes as instances are same, this is because, one of the thread races first to create instance, while other thread will return the instance straight away, created by first thread as it checks [ if (dbConn == null) ]." />
-    <option name="LAST_COMMIT_MESSAGE" value="To break singleton with the multithreading:&#10; extend the class with Thread and override run() by returning the instance of singleton. Then create two threads, join them with the main Thread, then call the getInstance() with both the threads and assign to singleton objects and later assert to test. They fail the test as two instances are created sometimes, because the two threads check [ if (dbConn == null) ] in getInstance() and since they are null, they create new instances at same time. But sometimes the test passes as instances are same, this is because, one of the thread races first to create instance, while other thread will return the instance straight away, created by first thread as it checks [ if (dbConn == null) ]." />
+    <MESSAGE value="To make singleton class thread proof, we use 'synchronized' keyword for the getInstance(). This makes only one thread access the method at a time." />
+    <option name="LAST_COMMIT_MESSAGE" value="To make singleton class thread proof, we use 'synchronized' keyword for the getInstance(). This makes only one thread access the method at a time." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -423,19 +432,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java</url>
-          <line>22</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java</url>
-          <line>25</line>
+          <line>28</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java</url>
-          <line>23</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -487,8 +496,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/indus/training/singleton/Singleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="187">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
         </state>
       </provider>
     </entry>

@@ -8,6 +8,8 @@ public class Singleton implements Cloneable, Serializable {
 
     private static Singleton ourInstance = null;
 
+    private final static Object LOCK = new Object();
+
     private Singleton() {
     }
 
@@ -19,9 +21,19 @@ public class Singleton implements Cloneable, Serializable {
         return ourInstance;
     }*/
 
+    /*//using synchronized so that only one thread can call the method.
     public synchronized static Singleton getInstance() {
         if (ourInstance == null) {
             ourInstance = new Singleton();
+        }
+        return ourInstance;
+    }*/
+
+    public static Singleton getInstance() {
+        synchronized (LOCK) {
+            if (ourInstance == null) {
+                ourInstance = new Singleton();
+            }
         }
         return ourInstance;
     }
