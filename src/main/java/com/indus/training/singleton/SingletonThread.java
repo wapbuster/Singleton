@@ -6,10 +6,12 @@ public class SingletonThread extends Thread {
 
     @Override
     public void run() {
+
         this.instanceThread = Singleton.getInstance();
     }
 
     public Singleton getInstanceThread() {
+
         return instanceThread;
     }
 
