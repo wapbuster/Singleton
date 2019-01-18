@@ -3,6 +3,8 @@ package com.indus.training.singleton;
 import org.junit.Test;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.*;
 
@@ -111,4 +113,46 @@ public class SingletonTest {
 
         assertEquals(obj1, obj2);
     }
+
+    @Test
+    public void testReflection() {
+
+        //class loading method 1
+        Class clz = Singleton.class;
+        Class anotherClz = null;
+        Class yetAnotherclz = null;
+
+        //class loading method 2
+        anotherClz = Singleton.getInstance().getClass();
+
+        //class loading method 3
+        try {
+            yetAnotherclz = Class.forName("com.indus.training.singleton.Singleton");
+        } catch (ClassNotFoundException clznfe) {
+            clznfe.printStackTrace();
+        }
+
+        Singleton firstObj = Singleton.getInstance();
+        Singleton secondObj = null;
+
+        Constructor<Singleton>[] constructors = clz.getDeclaredConstructors();
+
+        for (Constructor constructor : constructors) {
+            System.out.println("Constructors list : " + constructor);
+            constructor.setAccessible(true);
+            try {
+                secondObj = (Singleton) constructor.newInstance();
+            } catch (InstantiationException instEx) {
+                instEx.printStackTrace();
+            } catch (IllegalAccessException illAccEx) {
+                illAccEx.printStackTrace();
+            } catch (InvocationTargetException invTarEx) {
+                invTarEx.printStackTrace();
+            }
+
+        }
+        assertEquals(firstObj, secondObj);
+
+    }
+
 }
