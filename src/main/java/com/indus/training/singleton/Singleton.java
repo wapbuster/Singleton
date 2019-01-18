@@ -11,13 +11,21 @@ public class Singleton implements Cloneable, Serializable {
     private Singleton() {
     }
 
-    // lazy instantiation
+    /*// lazy instantiation
     public static Singleton getInstance() {
         if (ourInstance == null) {
             ourInstance = new Singleton();
         }
         return ourInstance;
+    }*/
+
+    public synchronized static Singleton getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new Singleton();
+        }
+        return ourInstance;
     }
+
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
