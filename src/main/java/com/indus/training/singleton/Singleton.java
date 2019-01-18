@@ -30,9 +30,11 @@ public class Singleton implements Cloneable, Serializable {
     }*/
 
     public static Singleton getInstance() {
-        synchronized (LOCK) {
-            if (ourInstance == null) {
-                ourInstance = new Singleton();
+        if (ourInstance == null) {
+            synchronized (LOCK) {
+                if (ourInstance == null) {
+                    ourInstance = new Singleton();
+                }
             }
         }
         return ourInstance;
